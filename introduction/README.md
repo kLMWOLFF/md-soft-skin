@@ -8,7 +8,7 @@
 
     (In collaboration with CNRS, CEA, INRIA)
 
-   ![alt text](ref-images/octopus.png)
+   ![alt text](readme-images/octopus.png)
 
    **Robots** -  increasingly integrated into our domestic lives
 
