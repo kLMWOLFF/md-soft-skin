@@ -60,3 +60,6 @@ Using ideas from 1+ 2 exercises, write a short paragraph in markdown that descri
     - Why -
     Why does it exist? For what reasons is interaction taking place?
 
+- Check geral design presentation: [text](../../03.presentations/06-11-2024.md)
+
+- Check iteration prototype document: [text](iteration-prototypes.md)
