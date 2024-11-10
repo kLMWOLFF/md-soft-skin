@@ -53,6 +53,30 @@ Integrating new technologies **+** Familiar technologies or gestures
 - Less is more. 
 - Create an engaging experience.
 
+## **Planing:** 
+**Phase 1: Observation, Field Research, and Experimentation (October 14 to October 25)**
+- Understanding the world of soft robotics
+- Mapping initial ideas and research, apply the methodologies taught in class. 
+- Start prototype and pitch ideas.
+- Compile references on soft robotics, current and future innovations, and insights (literature, science fiction, films, product design, and textile design) 
+- Examine the concept of domestic spaces (field research, observations, and interviews).
+
+**Phase 2: Intentions and Concepts (October 25 to November 16)**
+- Define initial intentions, user scenarios, and possible interactions. 
+- Create paper mock-ups to test and pitch our first ideas. Focus on visualizing the project intentions (mock-ups, scenarios, drawings) and preparing a presentation for our mid-critique.
+
+**Phase 3: Prototyping (November 18 to December 20)**
+- Develop scenarios and paper prototypes to illustrate and test our initial ideas. 
+- Shape and form exploration.
+- Prototyping (3D, electronics, etc.). 
+- Continue iterating and refine the final details 
+- Test day
+
+**Phase 4: Final Development, Scenario Creation, and Presentation (December 20 to January 15)**
+- Completing the project, scenario, and final production
+- Create all the final assets needed for your presentation and the final jury.
+
+
 ## **Deliverables:** 
 1. Presentation (research, goals, insights and methodology).
 2. PDF detailing the key interactions of your object.
