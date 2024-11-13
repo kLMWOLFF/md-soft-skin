@@ -1,4 +1,4 @@
-**PRODUCT DESIGN**
+# **PRODUCT DESIGN**
 
 **Context:**
 - identity/values
@@ -42,3 +42,122 @@ Test different scenarios w different users.
     - Pleats (origami/repeating) - christophe Guberan (printing water patterns on paper to make it retract on specific places)
     - Narrative cut-outs (pop-up)
     - Playing with elements (air/water/earth/fire) - kites, Adrianus Kundert, Pinaffo Pluvinage (papier machine: conductive ink)
+
+    ## Skin prototypes
+
+     **P skin**
+
+     Skin cut
+     ![alt text](images/p.jpg)
+
+     Rapport
+     ![alt text](images/p-rapport.jpg)
+
+     Pattern
+     ![alt text](images/p-pattern.jpg)
+
+     Movement
+     ![alt text](images/p-movement.jpg)
+
+     **b skin**
+
+     Skin cut
+     ![alt text](images/b.jpg)
+
+     Rapport
+     ![alt text](images/b-rapport.jpg)
+
+     Pattern
+     ![alt text](images/b-pattern.jpg)
+
+     Movement
+     ![alt text](images/b-movement.jpg)
+
+     **t skin**
+
+     Skin cut
+     ![alt text](images/t.jpg)
+
+     Rapport
+     ![alt text](images/t-rapport.jpg)
+
+     Pattern
+     ![alt text](images/t-movement.jpg)
+
+     Movement
+     ![alt text](images/t-movement1.jpg)
+     ![alt text](images/t-movement2.jpg)
+     
+     
+     **e skin**
+
+     Skin cut
+     ![alt text](images/e.jpg)
+
+     Rapport
+     ![alt text](images/e-rapport.jpg)
+
+     Pattern
+     ![alt text](images/e-pattern.jpg)
+
+     Movement
+     ![alt text](images/e-movement.jpg)
+
+     **l skin**
+
+     Skin cut
+     ![alt text](images/l.jpg)
+
+     Rapport
+     ![alt text](images/l-rapport.jpg)
+
+     Pattern
+     ![alt text](images/l-pattern.jpg)
+
+     Movement
+     ![alt text](images/l-movement.jpg)
+
+     **f skin**
+
+     Skin cut
+     ![alt text](images/f.jpg)
+
+     Rapport
+     ![alt text](images/f-rapport.jpg)
+
+     Pattern
+     ![alt text](images/f-pattern.jpg)
+
+     Movement
+     ![alt text](images/f-movement1.jpg)
+     ![alt text](images/f-movement2.jpg)
+
+     **a skin**
+
+     Skin cut
+     ![alt text](images/a.jpg)
+
+     Rapport
+     ![alt text](images/a-rapport.jpg)
+
+     Pattern
+     ![alt text](images/a-pattern.jpg)
+
+     Movement
+     ![alt text](images/a-movement.jpg)
+
+     **h skin**
+     
+     Skin cut
+     ![alt text](images/h.jpg)
+
+     Rapport
+     ![alt text](images/h-rapport.jpg)
+
+     Pattern
+     ![alt text](images/h-pattern.jpg)
+
+     Movement
+     ![alt text](images/h-movement.jpg)
+
+     
