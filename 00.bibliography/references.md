@@ -4,4 +4,10 @@
 
     https://dunneandraby.co.uk/content/projects/510/0
 
+- **Papier Machine** Objets électroniques sonores en papier.
+
+    ![alt text](images/papmachined.jpg)
+
+    https://www.solutions-numeriques.com/special-noel-papier-machine-n0-6-objets-electroniques-sonores-en-papier-a-monter-soi-meme/
+
 

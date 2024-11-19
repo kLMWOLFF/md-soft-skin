@@ -121,6 +121,7 @@ The objective is to reduce the voltage in the end (U2) to make sure we don`t hav
 - Normally, diodes don't emite light. LED are bad diodes, that don't block current but, instead, produces light.
 - Different Led's colors respond/work in different currents lenghts (mA), in which they will consume different amounts of voltage.
 - LED ref: 2,2V/ 20mA
+- Arduino maximum current = 
 
 Calculate the resistence of a LED:
 
@@ -128,4 +129,140 @@ Calculate the resistence of a LED:
 
 ![alt text](images/diode.jpg)
 
-*Turn on a LED*
+* When connecting external components to the arduino (ex. step motor) that requires more energy then the arduino can provide (5V), you can power the component with an external font, but the GND of both Component + Arduino need to be connected, to have the same parameter.
+
+* Arduino mp3 player shield - have a sd card entrance and jack output. When connected to the Arduino, it can be turned into an mp3 player.
+
+                - Vin (Voltage in): pin used to power the arduino with an external battery
+                - 2-13 (Digital input/output): digital pins used for both inputs+outputs. Work with two values = 1 or 0 (HIGH and LOW). 
+                - Some digital pins have PWM - pulse wave modulation(~): They receive analog messages from 0 (off) to 255 (on). Usually, the PWM function is available on pins 3, 5, 6, 9, 10, and 11.  
+                - A0-A5 (analog inputs/outputs):  An analog signal is one that can take on any number of values. The function that you use to obtain the value of an analog signal is analogRead(pin). This function converts the value of the voltage on an analog input pin and returns a digital value from 0 to 1023, relative to the reference value.
+                 - TX>0 (info transmiter)/RX>1 (info reception): careful when use, because it keeps sending messages to the arduino through the same entrance this one uses to run the code. It may block the info passage.
+
+
+### *Blinking a LED*
+**Build**
+![alt text](images/circuit.blibkLed.png)
+
+**Code**
+
+                int led = 13;
+
+                void setup() {                
+                pinMode(led, OUTPUT);  //turn pin13 into an Output
+                }
+
+                void loop() {
+                digitalWrite(led, HIGH);  //send 5v to pin13
+                delay(1000);             
+                digitalWrite(led, LOW);  //send 0v to pin13
+                delay(1000); 
+                }
+
+### *Blinking a rgb LED*
+**Build**
+![alt text](images/rgb.light.png)
+![alt text](images/blinkRGB1.jpg)
+![alt text](images/blinkRGB2.jpg)
+
+**Code**
+
+                int redPin = 11;
+                int greenPin = 10;
+                int bluePin = 9;
+
+                void setup(){
+                pinMode(redPin, OUTPUT);
+                pinMode(greenPin, OUTPUT);
+                pinMode(bluePin, OUTPUT);
+                }
+
+                void loop() {
+                delay(300);
+                setColor(255, 0, 0); //red
+                delay(1000);
+                setColor(0, 255, 0); //green
+                delay(1000);
+                setColor(0, 0, 255); //blue
+                delay(1000);
+                }
+
+                void setColor(int red, int green, int blue) {
+                analogWrite(redPin, red);
+                analogWrite(greenPin, green);
+                analogWrite(bluePin, blue);
+                }
+
+## Constant
+- Allows you to give a name and a meaning to a value
+- The value cannot change during execution 
+- Allows you to isolate the numerical values (the configuration) in one place
+- Writen with fullupercase and (_) for dividing names
+- Constant don't need to end its lines with (;).
+
+                #define LED 13 
+                void setup() { 
+                  pinMode(LED, OUTPUT);     
+                } 
+
+
+
+## Variable
+- Allows you to assign a name to a value
+- The value can change during the execution of the program
+- The value is used instead of the name
+- Boolean = variable that can only have 2 states (True/False)
+- val = variable box where you can store a value
+
+                #define LED 13 
+                boolean val = HIGH; 
+                void setup() { 
+                  pinMode(LED, OUTPUT);     
+                  digitalWrite(LED, val); 
+                }
+
+- (!) = negative
+
+val = !val; //the value should change to its opposite everytime it is called
+
+                #define LED 13
+                boolean val = HIGH;
+
+                void setup() {
+                pinMode(LED, OUTPUT);
+                
+                }
+
+                void loop() {
+                digitalWrite(LED, val); //call the variable val (turn the led hight)
+                delay (1000);
+                val = !val; //call the variable val again but negate it (if the light is on, it turn off. If it is off, it turns on)
+                }
+
+### *Button turn on/off LED*
+**Build**
+![alt text](images/button.Led.jpg)
+![alt text](images/arduino.processing.jpg)
+
+**Code**
+
+                #define LED 12
+                #define BUTTON 8
+
+                void setup() {
+                pinMode(LED, OUTPUT);
+                pinMode(BUTTON, INPUT_PULLUP); //connect the button to arduino internal resistor, which connects to the 5v
+                
+                Serial.begin(9600);
+                }
+
+                void loop() {
+                boolean val = digitalRead(BUTTON);
+                digitalWrite(LED, val);
+
+                //Serial.println("Hello\n\n\n...."); // \n = new line
+                //Serial.println("A\tB\tC"); // \t = tab
+
+                Serial.println(val);
+                delay(100);
+                }
