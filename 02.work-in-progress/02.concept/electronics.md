@@ -266,3 +266,263 @@ val = !val; //the value should change to its opposite everytime it is called
                 Serial.println(val);
                 delay(100);
                 }
+
+### *Potentiometer*
+Have 3 pins: Positive (5v), Voltimeter (A0), Zero (GND)
+The position of the positive and ground can be switched, which will change the direction the potentiometer needs to be turned to (where the 0 and 5v stands).
+The middle pin is always the reading. Is the neddle that changes position when the potenciometer is turned, positioning itself between the values of the circular resistor (between 0Ω and 10kΩ), increasing or decreasing the resistance value.
+
+**Build**
+
+![alt text](images/potentiometer.jpg)
+
+**Code**
+
+                void setup() {
+                // put your setup code here, to run once:
+                Serial.begin(9600);
+
+                }
+
+                void loop() {
+                // Read an analog input, which returns a value between 0 and 1023 (because it has a 10bits memory - 2¹0)
+                int a0 = analogRead(A0);
+
+                //convert analog input to voltage in millivolt
+                //long value is an interger (int)
+                long voltage = map(a0, 0, 1023, 0, 5000);
+
+                //in this first case, since the float = "voltage", that is already an int, there is no decimal house
+                //float volts = voltage / 1000;
+
+                //in this case, multipling 1000 by 0, gives the voltage 2 decimal houses
+                float volts = voltage / 1000.0;
+
+
+                Serial.print(a0);
+                Serial.print("\t");
+                Serial.print(voltage);
+                Serial.print(" mV\t\t");
+                Serial.print(volts);
+                Serial.println(" V");
+
+                delay(100);
+                }
+
+
+**Potentiometer + Processing (moving a rectangle based on the potentiometer value)**
+
+The same code above was used, and the value from the potentiometer was passed to processing through IDE serial monitor (the serial monitor window must be closed in order for processing to be able to make the reading in the same the port).
+
+![alt text](images/potentiometerProcessing.mp4)
+![alt text](images/processing.png)
+
+
+**Potentiometer LED dim**
+
+Using a potentiometer to dim a light.
+
+**Build**
+
+![alt text](images/dimLight.jpg)
+![alt text](images/dimLight.mp4)
+
+**Code**
+
+                #define LED 13
+                int lum = 15; //brightness between 0 and 20
+
+
+                void setup() {
+                pinMode(LED, OUTPUT);
+                }
+
+                void loop() {
+
+                //read the potentiometer value
+                int a0 = analogRead(A0);
+
+                //map the range of the potentiometer to the lum of the light
+                lum = map(a0,0,1023,0,20);
+
+                //translate the value of the potentiometer to the value on the LED
+                digitalWrite(LED, HIGH);
+                delay(lum); 
+                digitalWrite(LED, LOW);
+                delay(20 - lum);
+                }   
+
+
+### *Servo Motor*
+- Have 3 pins: Positive (5v), Signal (D2), Zero (GND)
+- A simple servo motor can be connected directly to the 5v of the arduino.
+- If the motor needs mor current that arduino can provide (5v/200mA), you need to use an external power supply. 
+In that case you will need one loop to control the digital port (linking servo to arduino) and one loop to connect the motor to the power supply (gnd + 5v).
+
+![alt text](images/servoMotor.png)
+
+**Build**
+
+![alt text](images/servo1.jpg)
+![alt text](images/servo2.jpg)
+
+**Code**
+
+                #include <Servo.h>
+
+
+                Servo myservo; //create servo object to control the servo
+
+                int potpin = A0; //analog pin used to connect the potentiometer
+                int val; //variable to read the  value from the analog pin
+
+
+                void setup() {
+                myservo.attach(13); //attaches the servo on pin 9 to the servo object
+                }
+
+                void loop() {
+                val = analogRead(potpin);
+                int angle = map(val, 0, 1023, 0, 180);
+                myservo.write(angle);
+                delay(15);
+                }
+
+
+### *Light Sensor (LDR)*
+- Work the same way as a normal resistor
+- Need a 10k resistor.
+
+**Build**
+
+![alt text](images/ldr.jpg)
+
+**Code**
+
+                const int LIGHT_SENSOR_PIN = A0; // Arduino pin connected to light sensor's  pin
+                const int LED_PIN = 13;  // Arduino pin connected to LED's pin
+                const int ANALOG_THRESHOLD = 600;
+                // variables will change:
+                int analogValue;
+
+                void setup() {
+                pinMode(LED_PIN, OUTPUT); // set arduino pin to output mode
+                }
+
+                void loop() {
+                analogValue = analogRead(LIGHT_SENSOR_PIN); // read the input on analog pin
+                if(analogValue < ANALOG_THRESHOLD)
+                digitalWrite(LED_PIN, HIGH); // turn on LED
+                else
+                digitalWrite(LED_PIN, LOW);  // turn off LED
+                }
+
+### *Ultrasonic Sensor*
+- The ultrasonic sensor is a device that can measure distances using sound waves . It works in a similar way than bats and dolphins - by emitting sound waves and listening them bound back.
+-  It uses the speed of sound (340m/s).
+- The sensor consists of two primary components: a transmitter and a receiver .
+- When the sound wave hits an object, it bounces back like echo. 
+- This returning wave is detected by the receiver. The sensor will use the micro-controller (Arduino) internal clock to find out how much it took for the sound to bounce back.
+- Then, we can use this information to calculate the distance between the sensor and the object. 
+
+                [Distance = Velocity * Time]
+                
+But if we multiply this speed with the timing we found, we'll discover a value that's twice the real distance. That's happens because the sound hit the object and came back
+
+                Distance = (Velocity * Time) / 2 
+
+
+**Build**
+
+![alt text](images/ultrasonicSensor.jpg)
+
+**Code**
+
+                const int trigPin = 9;  
+                const int echoPin = 10; 
+
+                float duration, distance;  
+
+
+                void setup() {
+                pinMode(trigPin, OUTPUT);  
+                        pinMode(echoPin, INPUT);  
+                        Serial.begin(9600);  
+
+                }
+
+                void loop() {
+                digitalWrite(trigPin, LOW);  
+                        delayMicroseconds(2);  
+                        digitalWrite(trigPin, HIGH);  
+                        delayMicroseconds(10);  
+                        digitalWrite(trigPin, LOW);  
+
+                duration = pulseIn(echoPin, HIGH); //When the sound waves hit the receiver, it turns the Echo pin high
+                distance = (duration*.0343)/2; //time x speed = distance. Speed of sound = 340m/s
+
+                Serial.print("Distance: ");  //print results
+                        Serial.println(distance);  
+                        delay(100);  
+                }
+
+## Soldering
+
+1. Clean the tip of the solder iron with a brass sponge until it is shiny
+2. Heat the solder iron to 350 - 400 degrees
+3. Wet the tip of the iron with a drop of solder wire
+4. Heat the hole pad and part leg with the tip of the solder iron for 2-3sec
+5. Touch the heated pad with the solder wire (not to the solder iron!). The parts should be hot enough to melt the solder wire themselves.
+6. Add solder wire to both sides of the pad  (continue heating for 1-2 sec)
+7. Let it cool (don't blow)
+8. It should have a shiny, volcanic conical form
+
+![alt text](images/solderingProcedures.jpg)
+
+**Removing solder/Cleaning motherboard**
+1. Use the solder pump to remove bigger amounts of solder
+2. Use the wipping wire to remove smaller amounts of solder
+3. Use a steel wool or sand paper (number 600 up) to completely clean the soldered motherboard and return the cooper conectivity.
+
+## STATE MACHINE
+
+How to divide different states in a same code.
+State machine structure
+State has a beginning and an end and takes some time during that two.
+When I have to do something special for some time and then I have to do something else.a
+
+**States:**
+1. idle
+2. watchig
+3. barking
+4. bite
+5. greet
+
+**Conditions:**
+- Distance (D)
+- Speed (S)
+- Speed Limit (SL)
+
+        (iddle) if D>500
+                
+        (watching) if D<500, S<SL
+                
+        (barking) if D<500, S>SL
+                
+        (greet) if D<200, watching
+                
+        (bite) if D<200, barking
+                
+**State exchange**
+- idle>watching
+- watching>greet
+- greet>watching
+- greet>barking
+- barking>greet
+- watching>barking
+- barking>bite
+- bite>barking
+- barking>watching
+- watching>idle
+
+![alt text](images/stateExchange.jpg)
