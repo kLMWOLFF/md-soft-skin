@@ -11,13 +11,15 @@
 
 ## Inputs
 **How people interact with it? What movements/gestures they do?**
-- Caress it
-- braid it
-- fold it
-- lay down
-- walk over
+
+        - Caress it
+        - braid it
+        - fold it
+        - lay down
+        - walk over
 
 
+**Other observations:**
 - Looks like guitar pedals: make you want to step on them
 - looks confortable to lay down: It would be nice if they would move around you when you are over it, adapting to your shape.
 - It's satisfying to walk over it
@@ -47,5 +49,7 @@
 - They could all be activated by the user body movements
 - Could move faster/slower depending on the wearer mood
 
-
-![alt text]()
+![alt text](images/wear01.jpg)
+![alt text](images/wear02.jpg)
+![alt text](images/wear03.jpg)
+![alt text](images/wear04.jpg)
